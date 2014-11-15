@@ -2,7 +2,7 @@ block('select').mod('type', 'lang')(
     def().match(this._select)(function() {
         var langs = {
             javascript: 'JavaScript',
-            '1c': '1c',
+            '1c': '1C',
             delphi: 'Delphi',
             erlang: 'Erlang',
             perl: 'Perl',
@@ -22,7 +22,7 @@ block('select').mod('type', 'lang')(
             nginx: 'Nginx',
             brainfuck: 'Brainfuck',
             matlab: 'Matlab',
-            diff: 'diff',
+            diff: 'Diff',
             go: 'Go',
             django: 'Django',
             objectivec: 'Objective-C',
@@ -30,7 +30,7 @@ block('select').mod('type', 'lang')(
             cmake: 'CMake',
             scala: 'Scala',
             makefile: 'MAKEfile',
-            cs: 'cs',
+            cs: 'C#',
             bash: 'Bash',
             r: 'R',
             ruby: 'Ruby',
@@ -38,7 +38,7 @@ block('select').mod('type', 'lang')(
             dart: 'Dart',
             markdown: 'Markdown',
             scss: 'SCSS',
-            ini: 'ini',
+            ini: 'INI',
             http: 'HTTP',
             mathematica: 'Mathematica',
             puppet: 'Puppet',
@@ -48,7 +48,7 @@ block('select').mod('type', 'lang')(
             java: 'Java',
             lisp: 'LISP',
             actionscript: 'ActionScript',
-            erb: 'erb',
+            erb: 'ERB',
             tex: 'Tex'
         }
 

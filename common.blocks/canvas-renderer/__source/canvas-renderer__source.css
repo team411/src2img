@@ -3,3 +3,7 @@
     width:100%;
     min-width:500px;
 }
+.canvas-renderer__source textarea
+{
+    height:150px !important;
+}
