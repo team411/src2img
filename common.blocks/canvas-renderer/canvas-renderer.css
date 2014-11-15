@@ -1,0 +1,11 @@
+.canvas-renderer
+{
+    max-width:1280px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.canvas-renderer .select
+{
+    margin: 15px 30px 15px 0;
+}

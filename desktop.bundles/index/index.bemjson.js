@@ -10,6 +10,13 @@
     scripts: [{ elem : 'js', url : '_index.js' }],
     mods : { theme : 'islands' },
     content : [
+        { 
+            block: 'logo',
+            content: [
+                { tag: 'h1', content: 'SRC2IMG – BIG BEAUTIFUL LOGO' }
+            ]
+        },
+        
         {
             block: 'canvas-renderer',
             js: true,
@@ -48,6 +55,7 @@
                 
                 {
                     block : 'button',
+                    mix: { block: 'canvas-renderer', elem: 'get-image' },
                     text : 'Get PNG',
                     mods : { theme : 'islands', size : 'm' }
                 }

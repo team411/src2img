@@ -1,6 +1,6 @@
 ({
     shouldDeps: [ 
         { block: 'highlight' },
-        { tech: 'js', block: 'input' } 
+        { tech: 'js', block: 'input' }
     ]
 });
