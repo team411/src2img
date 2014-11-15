@@ -53,17 +53,17 @@
                         { val : 1, text : 'Default' }
                     ]
                 },
-
-                {
-                    elem: 'preview',
-                    text: 'Preview here'
-                },
-
+                
                 {
                     block : 'button',
                     mix: { block: 'canvas-renderer', elem: 'get-image' },
                     text : 'Get PNG',
                     mods : { theme : 'islands', size : 'xl', type: 'link' }
+                },
+
+                {
+                    elem: 'preview',
+                    text: 'Preview here'
                 }
             ]
         }
