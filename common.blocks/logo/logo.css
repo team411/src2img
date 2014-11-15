@@ -1,4 +1,16 @@
 .logo
 {
-    padding:30px;
+    background-color: black;
+    padding: 30px;
+    height: 200px;
+}
+
+.logo__inner
+{
+    max-width:1280px;
+}
+
+.logo__inner h1
+{
+    color: white;
 }

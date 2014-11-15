@@ -13,7 +13,12 @@
         {
             block: 'logo',
             content: [
-                { tag: 'h1', content: 'SRC2IMG – BIG BEAUTIFUL LOGO' }
+                {
+                    elem: 'inner',
+                    content: [
+                        { tag: 'h1', content: 'SRC2IMG – BIG BEAUTIFUL LOGO' }
+                    ]
+                }
             ]
         },
 
@@ -33,7 +38,7 @@
                     block : 'select',
                     mix: { block: 'canvas-renderer', elem: 'lang' },
                     directions : ['bottom-left'],
-                    mods : { mode : 'radio', theme : 'islands', size : 'l', type: 'lang'},
+                    mods : { mode : 'radio', theme : 'islands', size : 'xl', type: 'lang'},
                     name : 'lang',
                     options : [{val : 0, text : 'Language', checked: true}]
                 },
@@ -42,7 +47,7 @@
                     block : 'select',
                     mix: { block: 'canvas-renderer', elem: 'style' },
                     directions : ['bottom-left'],
-                    mods : { mode : 'radio', theme : 'islands', size : 'l', type: 'style'},
+                    mods : { mode : 'radio', theme : 'islands', size : 'xl', type: 'style'},
                     name : 'style',
                     options : [
                         { val : 1, text : 'Default' }
@@ -58,7 +63,7 @@
                     block : 'button',
                     mix: { block: 'canvas-renderer', elem: 'get-image' },
                     text : 'Get PNG',
-                    mods : { theme : 'islands', size : 'm', type: 'link' }
+                    mods : { theme : 'islands', size : 'xl', type: 'link' }
                 }
             ]
         }
