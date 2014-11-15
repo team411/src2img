@@ -37,7 +37,7 @@ production-postbuild:
 	| xargs zopfli --i15
 
 .PHONY: clean
-cachelean: npm_deps
+clean: npm_deps
 	rm -rf _
 	$(ENB) make clean
 
