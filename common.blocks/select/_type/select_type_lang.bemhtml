@@ -6,7 +6,7 @@ block('select').mod('type', 'lang')(
             delphi: 'Delphi',
             erlang: 'Erlang',
             perl: 'Perl',
-            Apache: 'Apache',
+            apache: 'Apache',
             less: 'LESS',
             clojure: 'Clojure',
             sql: 'SQL',

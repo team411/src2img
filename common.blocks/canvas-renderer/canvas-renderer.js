@@ -1,6 +1,14 @@
 modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas'], function(provide, hljs, BEMDOM, h2c) {
 
     BEMDOM.decl(this.name, {
+        beforeSetMod: {
+            lang: {
+                '*': function() {
+                    this._codeContainer
+                        .removeClass(this.getMod('lang'))
+                }
+            }
+        },
 
         onSetMod: {
             js: {
@@ -13,39 +21,35 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas'], fu
                     this._lang = this.findBlockOn('lang', 'select');
                     this._style = this.elem('style');
 
-
-                    this._source.on('change', this._onSourcePaste, this);
                     this._saveButton.on('click', this._onButtonClick, this);
+                    this._source.on('change', this._onSourceChange, this);
+                    this._lang.on('change', this._onLangChange, this);
+                }
+            },
+
+            lang: {
+                '*': function() {
+                    this._codeContainer
+                        .addClass(this.lang);
+
+                    hljs.highlightBlock(this._codeContainer.get(0));
                 }
             }
         },
 
-        _onSourcePaste: function() {
-            var val = this._source.getVal();
-            this.oldLang = this.lang;
-            this.lang = hljs.highlightAuto(val).language;
-
-            //console.log(hljs.highlightAuto(val));
-            if (this.oldLang === this.lang) {
-                return;
-            }
-            this._lang.setVal(this.lang);
-            this._codeContainer
-                .text(val)
-                .removeClass(this.oldLang)
-                .addClass(this.lang);
-
-            //console.log(this._codeContainer.get(0));
-
-            hljs.highlightBlock(this._codeContainer.get(0));
-        },
-
         _onSourceChange: function() {
+            var val = this._source.getVal();
+            this._codeContainer
+                .text(val);
 
+            this.lang = hljs.highlightAuto(val).language;
+            this._lang.setVal(this.lang);
         },
 
         _onLangChange: function() {
-
+            this.lang = this._lang.getVal();
+            this
+                .setMod('lang', this.lang);
         },
 
         _onButtonClick: function() {
