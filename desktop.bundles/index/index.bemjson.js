@@ -48,7 +48,8 @@
                 },
 
                 {
-                    block: 'canvas-renderer', elem: 'preview'
+                    elem: 'preview',
+                    text: 'Preview here'
                 },
 
                 {
