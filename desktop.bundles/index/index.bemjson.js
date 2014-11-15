@@ -10,13 +10,13 @@
     scripts: [{ elem : 'js', url : '_index.js' }],
     mods : { theme : 'islands' },
     content : [
-        { 
+        {
             block: 'logo',
             content: [
                 { tag: 'h1', content: 'SRC2IMG – BIG BEAUTIFUL LOGO' }
             ]
         },
-        
+
         {
             block: 'canvas-renderer',
             js: true,
@@ -32,17 +32,15 @@
                 {
                     block : 'select',
                     mix: { block: 'canvas-renderer', elem: 'lang' },
-                    mods: { mode : 'radio', theme : 'islands', size : 'l' },
-                    name: 'lang',
-                    options: [
-                        { val : 1, text : 'Ruby' }
-                    ]
+                    mods : { mode : 'radio', theme : 'islands', size : 'l', type: 'lang'},
+                    name : 'lang',
+                    options : [{val : 0, text : 'Language', checked: true}]
                 },
 
                 {
                     block : 'select',
                     mix: { block: 'canvas-renderer', elem: 'style' },
-                    mods : { mode : 'radio', theme : 'islands', size : 'l' },
+                    mods : { mode : 'radio', theme : 'islands', size : 'l', type: 'style'},
                     name : 'style',
                     options : [
                         { val : 1, text : 'Default' }

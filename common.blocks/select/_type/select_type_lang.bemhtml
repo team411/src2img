@@ -1,0 +1,65 @@
+block('select').mod('type', 'lang')(
+    def().match(this._select)(function() {
+        var langs = {
+            javascript: 'JavaScript',
+            '1c': '1c',
+            delphi: 'Delphi',
+            erlang: 'Erlang',
+            perl: 'Perl',
+            Apache: 'Apache',
+            less: 'LESS',
+            clojure: 'Clojure',
+            sql: 'SQL',
+            python: 'Python',
+            haml: 'HAML',
+            xml: 'XML',
+            stylus: 'Stylus',
+            css: 'CSS',
+            css: 'C++',
+            json: 'JSON',
+            coffeescript: 'CoffeeScript',
+            swift: 'Swift',
+            nginx: 'Nginx',
+            brainfuck: 'Brainfuck',
+            matlab: 'Matlab',
+            diff: 'diff',
+            go: 'Go',
+            django: 'Django',
+            objectivec: 'Objective-C',
+            'erlang-repl': 'Erlang-REPL',
+            cmake: 'CMake',
+            scala: 'Scala',
+            makefile: 'MAKEfile',
+            cs: 'cs',
+            bash: 'Bash',
+            r: 'R',
+            ruby: 'Ruby',
+            haskell: 'Haskell',
+            dart: 'Dart',
+            markdown: 'Markdown',
+            scss: 'SCSS',
+            ini: 'ini',
+            http: 'HTTP',
+            mathematica: 'Mathematica',
+            puppet: 'Puppet',
+            lua: 'Lua',
+            rust: 'Rust',
+            scheme: 'Scheme',
+            java: 'Java',
+            lisp: 'LISP',
+            actionscript: 'ActionScript',
+            erb: 'erb',
+            tex: 'Tex'
+        }
+
+        this._select.options = Object.keys(langs).map(function(code){
+            return {val: code, text: langs[code]}
+        });
+
+        applyNext({
+            _select : this.ctx,
+            _checkedOptions : this._checkedOptions,
+            _firstOption : this._firstOption
+        });
+    })
+)
