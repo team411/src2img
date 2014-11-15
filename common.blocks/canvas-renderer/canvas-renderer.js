@@ -1,11 +1,11 @@
-modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas'], function(provide, hljs, BEMDOM, h2c) {
+modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'functions__debounce'], function(provide, hljs, BEMDOM, h2c, debounce) {
 
     BEMDOM.decl(this.name, {
         beforeSetMod: {
             lang: {
                 '*': function() {
                     this._codeContainer
-                        .removeClass(this.getMod('lang'))
+                        .removeClass(this.getMod('lang'));
                 }
             }
         },
@@ -24,7 +24,7 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas'], fu
                     this._codeStyle = this.elem('style-set');
 
                     this._saveButton.on('click', this._onButtonClick, this);
-                    this._source.on('change', this._onSourceChange, this);
+                    this._source.on('change', debounce(this._onSourceChange, 200, true, this), this);
                     this._lang.on('change', this._onLangChange, this);
                     this._style.on('change', this._onStyleChange, this);
                 }
@@ -40,6 +40,18 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas'], fu
             }
         },
 
+        _generateImage: function() {
+            var button = this._saveButton;
+            button.setMod('disabled');
+            h2c(this._codeContainer.get(0), {
+                onrendered: function(canvas) {
+                    button.domElem.attr('href', canvas.toDataURL());
+                    button.domElem.attr('download', 'src2img.png');
+                    button.delMod('disabled');
+                }
+            });
+        },
+
         _onSourceChange: function() {
             this.code = this._source.getVal();
             this._codeContainer
@@ -47,6 +59,8 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas'], fu
 
             this.lang = hljs.highlightAuto(this.code).language;
             this._lang.setVal(this.lang);
+
+            this._generateImage();
         },
 
         _onLangChange: function() {
@@ -56,15 +70,6 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas'], fu
             this._codeContainer
                 .text(this.code);
             hljs.highlightBlock(this._codeContainer.get(0));
-        },
-
-        _onButtonClick: function() {
-            h2c(this._codeContainer.get(0), {
-                onrendered: function(canvas) {
-                    this.domElem.attr('href', canvas.toDataURL());
-                    this.domElem.attr('download', 'src2img.png');
-                }.bind(this._saveButton)
-            });
         },
 
         _onStyleChange: function() {

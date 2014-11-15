@@ -7,6 +7,7 @@
         { block: 'highlight' },
         { block: 'html2canvas' },
 
-        { tech: 'js', block: 'input' }
+        { tech: 'js', block: 'input' },
+        { block: 'functions', elem: 'debounce' }
     ]
 });
