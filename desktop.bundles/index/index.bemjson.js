@@ -32,6 +32,7 @@
                 {
                     block : 'select',
                     mix: { block: 'canvas-renderer', elem: 'lang' },
+                    directions : ['bottom-left'],
                     mods : { mode : 'radio', theme : 'islands', size : 'l', type: 'lang'},
                     name : 'lang',
                     options : [{val : 0, text : 'Language', checked: true}]
@@ -40,6 +41,7 @@
                 {
                     block : 'select',
                     mix: { block: 'canvas-renderer', elem: 'style' },
+                    directions : ['bottom-left'],
                     mods : { mode : 'radio', theme : 'islands', size : 'l', type: 'style'},
                     name : 'style',
                     options : [
