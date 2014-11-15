@@ -1,10 +1,13 @@
 libs/
 node_modules/
+/_/
+
 .DS_Store
 .idea
 .project
 .svn
 npm-debug.log
+.tern-port
 
 # bem
 .bem/cache/
@@ -15,3 +18,6 @@ npm-debug.log
 *pages*/*/*.*
 !*pages*/*/*.bemjson.js
 !*pages*/.bem/*
+
+*~
+*\#

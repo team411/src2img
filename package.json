@@ -13,6 +13,7 @@
     "bem-environ": "~1.4.0"
   },
   "devDependencies": {
+    "inherit": "2.2.2",
     "bem": "0.9.0",
     "bem-tools-autoprefixer": "0.0.3",
     "borschik": "^1.3.0",
