@@ -1,0 +1,3 @@
+lock('canvas-renderer').elem('code')(
+    tag()('code')
+);

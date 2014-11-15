@@ -20,25 +20,25 @@
         {
             block: 'canvas-renderer',
             js: true,
-            content: [        
+            content: [
                 {
                     block: 'textarea',
                     mix: { block: 'canvas-renderer', elem: 'source' },
                     val: '',
                     mods: { theme: 'islands', size: 'm' },
-                    placeholder: 'Source code'
+                    placeholder: 'Paste your source code here'
                 },
-                
+
                 {
                     block : 'select',
                     mix: { block: 'canvas-renderer', elem: 'lang' },
-                    mods : { mode : 'radio', theme : 'islands', size : 'l' },
-                    name : 'lang',
-                    options : [
+                    mods: { mode : 'radio', theme : 'islands', size : 'l' },
+                    name: 'lang',
+                    options: [
                         { val : 1, text : 'Ruby' }
                     ]
                 },
-                
+
                 {
                     block : 'select',
                     mix: { block: 'canvas-renderer', elem: 'style' },
@@ -48,11 +48,11 @@
                         { val : 1, text : 'Default' }
                     ]
                 },
-                
-                { 
+
+                {
                     block: 'canvas-renderer', elem: 'preview'
                 },
-                
+
                 {
                     block : 'button',
                     mix: { block: 'canvas-renderer', elem: 'get-image' },

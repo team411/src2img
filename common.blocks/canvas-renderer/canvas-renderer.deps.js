@@ -1,5 +1,5 @@
 ({
-    shouldDeps: [ 
+    shouldDeps: [
         { block: 'highlight' },
         { tech: 'js', block: 'input' }
     ]
