@@ -1,9 +1,0 @@
-block('canvas-renderer').elem('code-style')(
-    content()(function() {
-        return {
-            block: 'page',
-            elem: 'css',
-            url: '/_/hljs/default.css'
-        };
-    })
-);

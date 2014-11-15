@@ -19,11 +19,14 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas'], fu
                     this._saveButton = this.findBlockOn('get-image', 'button');
 
                     this._lang = this.findBlockOn('lang', 'select');
-                    this._style = this.elem('style');
+                    this._style = this.findBlockOn('style', 'select');
+
+                    this._codeStyle = this.elem('style-set');
 
                     this._saveButton.on('click', this._onButtonClick, this);
                     this._source.on('change', this._onSourceChange, this);
                     this._lang.on('change', this._onLangChange, this);
+                    this._style.on('change', this._onStyleChange, this);
                 }
             },
 
@@ -38,11 +41,11 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas'], fu
         },
 
         _onSourceChange: function() {
-            var val = this._source.getVal();
+            this.code = this._source.getVal();
             this._codeContainer
-                .text(val);
+                .text(this.code);
 
-            this.lang = hljs.highlightAuto(val).language;
+            this.lang = hljs.highlightAuto(this.code).language;
             this._lang.setVal(this.lang);
         },
 
@@ -50,6 +53,9 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas'], fu
             this.lang = this._lang.getVal();
             this
                 .setMod('lang', this.lang);
+            this._codeContainer
+                .text(this.code);
+            hljs.highlightBlock(this._codeContainer.get(0));
         },
 
         _onButtonClick: function() {
@@ -62,7 +68,10 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas'], fu
         },
 
         _onStyleChange: function() {
-
+            var url = ['/_/hljs/',
+                       this._style.getVal(),
+                       '.css'].join('');
+            this._codeStyle.attr('href', url);
         }
 
     });

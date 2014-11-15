@@ -4,7 +4,14 @@ block('canvas-renderer').elem('preview')(
         function() {
             var ctx = this.ctx;
             return [
-                { elem: 'code-style' },
+                {
+                    elem: 'style-set',
+                    tag: 'link',
+                    attrs: {
+                        href: '/_/hljs/default.css',
+                        rel: 'stylesheet'
+                    }
+                },
                 { elem: 'code-container', content : ctx.text }
             ];
         }
