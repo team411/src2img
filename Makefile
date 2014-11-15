@@ -22,6 +22,19 @@ server: npm_deps bower_deps build
 .PHONY: buildild
 build: npm_deps bower_deps _/hljs
 	$(ENB) make --no-cache
+	$(MAKE) $(YENV)-postbuild
+
+.PHONY: $(YENV)-postbuild
+development-postbuild:
+	$(info ---> $(YENV) postbuild)
+
+production-postbuild:
+	$(info ---> $(YENV) postbuild)
+	find _ \
+		-name *.css -o \
+		-name *.js -o \
+		-name *.svg \
+	| xargs zopfli --i15
 
 .PHONY: clean
 cachelean: npm_deps
