@@ -1,3 +1,7 @@
+const DEV_ENV = 'development';
+const PROD_ENV = 'production';
+const ENV = process.env.YENV || DEV_ENV;
+
 var techs = {
         // essential
         fileProvider: require('enb/techs/file-provider'),
@@ -34,8 +38,6 @@ var techs = {
     ];
 
 module.exports = function(config) {
-    var isProd = process.env.YENV === 'production';
-
     config.nodes('*.bundles/*', function(nodeConfig) {
         nodeConfig.addTechs([
             // essential
@@ -57,8 +59,8 @@ module.exports = function(config) {
             // [tech.bemtree, { devMode: process.env.BEMTREE_ENV === 'development' }],
 
             // bemhtml
-            [techs.bemhtml, { devMode: process.env.BEMHTML_ENV === 'development' }],
-            [techs.htmlFromBemjson],
+            [techs.bemhtml, { devMode: process.env.BEMHTML_ENV === DEV_ENV }],
+            [techs.htmlFromBemjson, { target: '?.pre.html' }],
 
             // client bemhtml
             [enbBemTechs.depsByTechToBemdecl, {
@@ -78,7 +80,7 @@ module.exports = function(config) {
             [techs.bemhtml, {
                 target: '?.browser.bemhtml.js',
                 filesTarget: '?.bemhtml.files',
-                devMode: process.env.BEMHTML_ENV === 'development'
+                devMode: process.env.BEMHTML_ENV === DEV_ENV
             }],
 
             // js
@@ -87,13 +89,49 @@ module.exports = function(config) {
                 target: '?.pre.js',
                 sources: ['?.browser.bemhtml.js', '?.browser.js']
             }],
-            [techs.prependYm, { source: '?.pre.js' }],
-
-            // borschik
-            [techs.borschik, { sourceTarget: '?.js', destTarget: '_?.js', freeze: true, minify: isProd }],
-            [techs.borschik, { sourceTarget: '?.css', destTarget: '_?.css', tech: 'cleancss', freeze: true, minify: isProd }]
+            [techs.prependYm, { source: '?.pre.js' }]
         ]);
 
-        nodeConfig.addTargets([/* '?.bemtree.js', */ '?.html', '_?.css', '_?.js']);
+
+        if (ENV === PROD_ENV) {
+            nodeConfig.addTech([
+                require('enb-borschik/techs/borschik'), {
+                    sourceTarget: '?.css',
+                    destTarget: '?.min.css',
+                    minify: true,
+                    freeze: true,
+                    tech: 'css'
+                }
+            ]);
+
+            nodeConfig.addTech([
+                require('enb-borschik/techs/borschik'), {
+                    sourceTarget: '?.js',
+                    destTarget: '?.min.js',
+                    minify: true,
+                    freeze: true,
+                    tech: 'js'
+                }
+            ]);
+
+            nodeConfig.addTech([
+                require('./techs/borschik-extended'), {
+                    sourceTarget: '?.pre.html',
+                    requiredTargets: ['?.min.js', '?.min.css'],
+                    destTarget: '?.html',
+                    minify: true,
+                    freeze: true,
+                    tech: 'html'
+                }
+            ]);
+        } else {
+            nodeConfig.addTechs([
+                [ require('enb/techs/file-copy'), { sourceTarget: '?.css', destTarget: '?.min.css' } ],
+                [ require('enb/techs/file-copy'), { sourceTarget: '?.js', destTarget: '?.min.js' } ],
+                [ require('enb/techs/file-copy'), { sourceTarget: '?.pre.html', destTarget: '?.html' } ]
+            ]);
+        }
+
+        nodeConfig.addTargets([/* '?.bemtree.js', */ '?.html', '?.min.css', '?.min.js']);
     });
 };
