@@ -27,6 +27,7 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
                     this._source.on('change', debounce(this._onSourceChange, 200, true, this), this);
                     this._lang.on('change', this._onLangChange, this);
                     this._style.on('change', this._onStyleChange, this);
+                    this._style.findBlockInside('menu').on('itemHovered', this._onStyleItemHover, this);
                 }
             },
 
@@ -72,10 +73,16 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
             hljs.highlightBlock(this._codeContainer.get(0));
         },
 
+        _onStyleItemHover: function(e, item) {
+            this._changeStyleLink(item.data.params.val);
+        },
+
         _onStyleChange: function() {
-            var url = ['/_/hljs/',
-                       this._style.getVal(),
-                       '.css'].join('');
+            this._changeStyleLink(this._style.getVal());
+        },
+
+        _changeStyleLink: function(val) {
+            var url = ['/_/hljs/', val, '.css'].join('');
             this._codeStyle.attr('href', url);
         }
 
