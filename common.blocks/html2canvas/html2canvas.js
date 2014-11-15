@@ -5,6 +5,8 @@
   Released under MIT License
 */
 
+modules.define('html2canvas', [], function(provide) {
+
 (function(window, document, module, exports, global, define, undefined){
 
 /*
@@ -2965,3 +2967,6 @@ function hasEntries(array) {
 }
 
 }).call({}, window, document);
+
+provide(window.html2canvas);
+});

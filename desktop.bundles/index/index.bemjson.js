@@ -58,7 +58,7 @@
                     block : 'button',
                     mix: { block: 'canvas-renderer', elem: 'get-image' },
                     text : 'Get PNG',
-                    mods : { theme : 'islands', size : 'm' }
+                    mods : { theme : 'islands', size : 'm', type: 'link' }
                 }
             ]
         }
