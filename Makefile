@@ -48,3 +48,5 @@ bower_deps: npm_deps
 .PHONY: npm_deps
 npm_deps:
 	npm install
+
+.DEFAULT_GOAL = server
