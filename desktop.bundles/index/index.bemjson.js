@@ -12,6 +12,7 @@
     content : [
         {
             block: 'canvas-renderer',
+            js: true,
             content: [        
                 {
                     block: 'textarea',
