@@ -57,7 +57,7 @@
                 {
                     block : 'button',
                     mix: { block: 'canvas-renderer', elem: 'get-image' },
-                    text : 'Get PNG',
+                    text : 'Generate and download PNG',
                     mods : { theme : 'islands', size : 'xl', type: 'link' }
                 },
 

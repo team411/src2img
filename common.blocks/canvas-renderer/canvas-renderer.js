@@ -27,7 +27,7 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
                     this._source.on('change', debounce(this._onSourceChange, 200, true, this), this);
                     this._lang.on('change', this._onLangChange, this);
                     this._style.on('change', this._onStyleChange, this);
-                    this._style.findBlockInside('menu').on('itemHovered', this._onStyleItemHover, this);
+                    this._style.findBlockInside('menu').on('itemHovered', debounce(this._onStyleItemHover, 150, false, this), this);
                 }
             },
 
@@ -37,6 +37,7 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
                         .addClass(this.lang);
 
                     hljs.highlightBlock(this._codeContainer.get(0));
+                    this._generateImage();
                 }
             }
         },
@@ -66,11 +67,14 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
 
         _onLangChange: function() {
             this.lang = this._lang.getVal();
-            this
-                .setMod('lang', this.lang);
             this._codeContainer
                 .text(this.code);
-            hljs.highlightBlock(this._codeContainer.get(0));
+            this
+                .setMod('lang', this.lang);
+
+            // hljs.highlightBlock(this._codeContainer.get(0));
+            
+            // this._generateImage();
         },
 
         _onStyleItemHover: function(e, item) {
@@ -84,6 +88,7 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
         _changeStyleLink: function(val) {
             var url = ['/_/hljs/', val, '.css'].join('');
             this._codeStyle.attr('href', url);
+            this._generateImage();
         }
 
     });
