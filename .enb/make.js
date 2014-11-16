@@ -115,7 +115,7 @@ module.exports = function(config) {
             ]);
 
             nodeConfig.addTech([
-                require('./techs/borschik-extended'), {
+                require('./enb-techs/borschik-extended'), {
                     sourceTarget: '?.pre.html',
                     requiredTargets: ['?.min.js', '?.min.css'],
                     destTarget: '?.html',
@@ -124,6 +124,19 @@ module.exports = function(config) {
                     tech: 'html'
                 }
             ]);
+
+            // Генерируется для бэкенда
+            nodeConfig.addTech([
+                require('./enb-techs/borschik-extended'), {
+                    sourceTarget: '?.bemjson.js',
+                    requiredTargets: ['?.min.js', '?.min.css'],
+                    destTarget: '?.bemjson.freeze.js',
+                    minify: true,
+                    freeze: true,
+                    tech: './.enb/borschik-techs/bemjson'
+                }
+            ]);
+            nodeConfig.addTargets(['?.bemjson.freeze.js']);
         } else {
             nodeConfig.addTechs([
                 [ require('enb/techs/file-copy'), { sourceTarget: '?.css', destTarget: '?.min.css' } ],
