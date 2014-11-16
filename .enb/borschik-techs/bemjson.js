@@ -25,9 +25,11 @@ exports.Tech = _JSON.Tech.inherit({
             for (var entity in entities) {
                 var ent = entities[entity];
                 // freeze images with cssBase.processLink
-                ent = JSON.stringify(ent).match(/"?'?url"?'?\s*:\s*'?"?([a-z0-9\/\._-]+)"?'?/);
+                var ent_str = JSON.stringify(ent);
+                ent = ent_str.match(/"?'?url"?'?\s*:\s*'?"?([a-z0-9\/\._-]+)"?'?/);
                 if(ent) {
-                    entities[entity] = JSON.parse(this.child('linkUrl', this.pathTo(ent[1])).process(baseFile));
+                    ent_str = ent_str.replace('"'+ent[1]+'"', this.child('linkUrl', this.pathTo(ent[1])).process(baseFile));
+                    entities[entity] = JSON.parse(ent_str);
                 }
             }
             // formatted output
