@@ -23,7 +23,6 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
 
                     this._codeStyle = this.elem('style-set');
 
-                    this._saveButton.on('click', this._onButtonClick, this);
                     this._source.on('change', debounce(this._onSourceChange, 200, true, this), this);
                     this._lang.on('change', this._onLangChange, this);
                     this._style.on('change', this._onStyleChange, this);
@@ -60,13 +59,12 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
                 .text(this.code);
 
             this.lang = hljs.highlightAuto(this.code).language;
-            
+
             if (this.lang === this.getMod('lang')) {
                 hljs.highlightBlock(this._codeContainer.get(0));
                 this._generateImage();
                 return;
             }
-            
             this._lang.setVal(this.lang);
         },
 
