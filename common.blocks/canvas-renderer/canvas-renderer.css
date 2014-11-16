@@ -1,9 +1,13 @@
 .canvas-renderer
 {
     max-width: 1280px;
+    min-width: 800px;
+
     margin: 0 auto;
     padding: 30px;
-    min-width: 800px;
+
+    overflow-x: hidden;
+
 }
 
 .canvas-renderer .select
