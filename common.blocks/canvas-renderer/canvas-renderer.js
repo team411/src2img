@@ -60,9 +60,14 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
                 .text(this.code);
 
             this.lang = hljs.highlightAuto(this.code).language;
+            
+            if (this.lang === this.getMod('lang')) {
+                hljs.highlightBlock(this._codeContainer.get(0));
+                this._generateImage();
+                return;
+            }
+            
             this._lang.setVal(this.lang);
-
-            this._generateImage();
         },
 
         _onLangChange: function() {
@@ -71,10 +76,6 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
                 .text(this.code);
             this
                 .setMod('lang', this.lang);
-
-            // hljs.highlightBlock(this._codeContainer.get(0));
-            
-            // this._generateImage();
         },
 
         _onStyleItemHover: function(e, item) {
@@ -87,6 +88,10 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
 
         _changeStyleLink: function(val) {
             var url = ['/_/hljs/', val, '.css'].join('');
+            if (val === this.style) {
+                return;
+            }
+            this.style = val;
             this._codeStyle.attr('href', url);
             this._generateImage();
         }
