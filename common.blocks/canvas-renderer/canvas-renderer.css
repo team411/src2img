@@ -3,6 +3,7 @@
     max-width: 1280px;
     margin: 0 auto;
     padding: 30px;
+    min-width: 800px;
 }
 
 .canvas-renderer .select

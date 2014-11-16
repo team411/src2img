@@ -14,10 +14,7 @@
             block: 'logo',
             content: [
                 {
-                    elem: 'inner',
-                    content: [
-                        { tag: 'h1', content: 'SRC2IMG – BIG BEAUTIFUL LOGO' }
-                    ]
+                    elem: 'inner'
                 }
             ]
         },
