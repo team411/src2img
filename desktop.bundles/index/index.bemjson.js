@@ -3,7 +3,7 @@
     title: 'SRC to PNG converter',
     favicon: '/favicon.ico',
     head: [
-        { elem: 'meta', attrs: { name: 'description', content: '' } },
+        { elem: 'meta', attrs: { name: 'description', content: 'Generate PNG image from your source code. No backend needed. Highlight source code and generate image for presentation.' } },
         { elem: 'meta', attrs: { name: 'viewport', content: 'width=device-width, initial-scale=1' } },
         { elem: 'css', url: 'index.min.css' }
     ],
