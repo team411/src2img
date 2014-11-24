@@ -1,10 +1,10 @@
 {
   "author": "",
-  "name": "bem-project-stub",
+  "name": "src-to-image-spa",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/bem/project-stub.git"
+    "url": "git://github.com/team411/src2img.git"
   },
   "engines": {
     "node": ">=0.10"
