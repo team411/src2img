@@ -1,4 +1,4 @@
-modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'functions__debounce'], function(provide, hljs, BEMDOM, h2c, debounce) {
+modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'functions__throttle'], function(provide, hljs, BEMDOM, h2c, throttle) {
 
     BEMDOM.decl(this.name, {
         beforeSetMod: {
@@ -23,10 +23,10 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
 
                     this._codeStyle = this.elem('style-set');
 
-                    this._source.on('change', debounce(this._onSourceChange, 200, true, this), this);
+                    this._source.on('change', throttle(this._onSourceChange, 200, false, this), this);
                     this._lang.on('change', this._onLangChange, this);
                     this._style.on('change', this._onStyleChange, this);
-                    this._style.findBlockInside('menu').on('itemHovered', debounce(this._onStyleItemHover, 150, false, this), this);
+                    this._style.findBlockInside('menu').on('itemHovered', throttle(this._onStyleItemHover, 200, false, this), this);
                 }
             },
 

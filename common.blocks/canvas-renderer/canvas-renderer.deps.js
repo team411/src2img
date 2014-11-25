@@ -8,6 +8,6 @@
         { block: 'html2canvas' },
 
         { tech: 'js', block: 'input' },
-        { block: 'functions', elem: 'debounce' }
+        { block: 'functions', elem: 'throttle' }
     ]
 });
