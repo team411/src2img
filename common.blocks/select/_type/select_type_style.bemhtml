@@ -49,9 +49,9 @@ block('select').mod('type', 'style')(
             "paraiso.light": "Paraiso light",
             "zenburn": "Zenburn",
             "dark": "Dark"
-        }
+        };
 
-        this._select.options = Object.keys(styles).map(function(style){
+        this._select.options = Object.keys(styles).sort().map(function(style){
             return {val: style, text: styles[style]}
         });
 
