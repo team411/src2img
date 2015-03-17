@@ -78,6 +78,12 @@
                 },
 
                 {
+                    block: 'github-fork-ribbon',
+                    url: 'https://github.com/team411/src2img',
+                    content: 'Fork me on Github'
+                },
+
+                {
                     tag: 'noscript',
                     content: [
                         {
