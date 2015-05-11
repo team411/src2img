@@ -39,7 +39,10 @@
             content: [
                 {
                     block: 'textarea',
-                    mix: { block: 'canvas-renderer', elem: 'source' },
+                    mix: [
+                        { block: 'canvas-renderer', elem: 'source' },
+                        { block: 'source-area', js: true }
+                    ],
                     val: '',
                     mods: { theme: 'islands', size: 'm' },
                     placeholder: 'Paste your source code here'
