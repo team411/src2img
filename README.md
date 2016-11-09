@@ -1,6 +1,6 @@
 # SRC to PNG online converter
 
-You can try it online on [team411.github.com/src2img](https://team411.github.com/src2img/).
+You can try it online on [team411.github.io/src2img](https://team411.github.io/src2img/).
 
 ## How to install
 
