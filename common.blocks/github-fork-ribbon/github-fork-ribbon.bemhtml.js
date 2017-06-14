@@ -1,0 +1,13 @@
+block('github-fork-ribbon')(
+    tag()('div'),
+    content()(function() {
+        return {
+            elem: 'link-wrapper',
+            content: {
+                block: 'link',
+                url: this.ctx.url,
+                content: this.ctx.content
+            }
+        };
+    })
+);

@@ -22,8 +22,8 @@ var techs = {
         // bemtree: require('enb-bemxjst/techs/bemtree-old'),
 
         // bemhtml
-        bemhtml: require('enb-bemxjst/techs/bemhtml-old'),
-        htmlFromBemjson: require('enb-bemxjst/techs/html-from-bemjson')
+        bemhtml: require('enb-bemxjst/techs/bemhtml'),
+        htmlFromBemjson: require('enb-bemxjst/techs/bemjson-to-html')
     },
     enbBemTechs = require('enb-bem-techs'),
     levels = [
