@@ -27,6 +27,11 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
                     this._lang.on('change', this._onLangChange, this);
                     this._style.on('change', this._onStyleChange, this);
                     this._style.findBlockInside('menu').on('itemHovered', throttle(this._onStyleItemHover, 200, false, this), this);
+
+                    if (this.code != '')
+                    {
+                        this._onSourceChange();
+                    }
                 }
             },
 
@@ -58,7 +63,9 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
             this._codeContainer
                 .text(this.code);
 
-            this.lang = hljs.highlightAuto(this.code).language;
+            if (!this.lang) {
+                this.lang = hljs.highlightAuto(this.code).language;
+            }
 
             if (this.lang === this.getMod('lang')) {
                 hljs.highlightBlock(this._codeContainer.get(0));

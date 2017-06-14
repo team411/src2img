@@ -54,6 +54,7 @@
                     directions: ['bottom-left'],
                     mods: { mode: 'radio', theme: 'islands', size: 'xl', type: 'lang'},
                     name: 'lang',
+                    optionsMaxHeight: 500,
                     options: [{val: 0, text: 'Language', checked: true}]
                 },
 
@@ -63,6 +64,7 @@
                     directions: ['bottom-left'],
                     mods: { mode: 'radio', theme: 'islands', size: 'xl', type: 'style'},
                     name: 'style',
+                    optionsMaxHeight: 500,
                     options: [
                         { val: 1, text: 'Default' }
                     ]
