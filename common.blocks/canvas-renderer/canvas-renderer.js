@@ -85,7 +85,7 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
         },
 
         _changeStyleLink: function(val) {
-            var url = ['/_/hljs/', val, '.css'].join('');
+            var url = ['_/hljs/', val, '.css'].join('');
             if (val === this.style) {
                 return;
             }
