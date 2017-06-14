@@ -66,7 +66,7 @@
                     name: 'style',
                     optionsMaxHeight: 500,
                     options: [
-                        { val: 1, text: 'Default' }
+                        { val: 'arta', text: 'Arta' }
                     ]
                 },
 

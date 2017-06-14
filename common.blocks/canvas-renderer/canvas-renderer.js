@@ -32,6 +32,8 @@ modules.define('canvas-renderer', ['highlight', 'i-bem__dom', 'html2canvas', 'fu
                     {
                         this._onSourceChange();
                     }
+                    this._style.setVal('arta');
+                    this._changeStyleLink(this._style.getVal());
                 }
             },
 
